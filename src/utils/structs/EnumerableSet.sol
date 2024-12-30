@@ -63,6 +63,49 @@ library EnumerableSet {
         return set.values;
     }
 
+    /* Bytes32 set */
+    struct Bytes32Set {
+        GenericSet inner;
+    }
+
+    function add(
+        Bytes32Set storage set,
+        bytes32 value
+    ) internal returns (bool) {
+        return _add(set.inner, value);
+    }
+
+    function remove(
+        Bytes32Set storage set,
+        bytes32 value
+    ) internal returns (bool) {
+        return _remove(set.inner, value);
+    }
+
+    function contains(
+        Bytes32Set storage set,
+        bytes32 value
+    ) internal view returns (bool) {
+        return _contains(set.inner, value);
+    }
+
+    function length(Bytes32Set storage set) internal view returns (uint256) {
+        return _length(set.inner);
+    }
+
+    function at(
+        Bytes32Set storage set,
+        uint256 index
+    ) internal view returns (bytes32) {
+        return _at(set.inner, index);
+    }
+
+    function values(
+        Bytes32Set storage set
+    ) internal view returns (bytes32[] memory) {
+        return _values(set.inner);
+    }
+
     /* Address set */
     struct AddressSet {
         GenericSet inner;
