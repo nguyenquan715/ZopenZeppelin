@@ -38,8 +38,8 @@ library BitMaps {
     }
 
     function _getSlotPosition(uint256 index) private pure returns (uint256 bucketIndex, uint256 bucketSlotIndex) {
-        bucketIndex = index / MAX_BUCKET_SIZE; // index >> 8
-        bucketSlotIndex = index - bucketIndex * MAX_BUCKET_SIZE; // index & 0xff
+        bucketIndex = index >> 8; // index / MAX_BUCKET_SIZE 
+        bucketSlotIndex = index & 0xff; // index - bucketIndex * MAX_BUCKET_SIZE 
     }
 
     function _getSlotValue(uint256 slots, uint256 slotIndex) private pure returns (bool) {
